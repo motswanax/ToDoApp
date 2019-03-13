@@ -8,18 +8,18 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #d32f2f;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #d32f2f;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
    <children>
       <AnchorPane layoutY="120.0" prefHeight="281.0" prefWidth="700.0" style="-fx-background-color: #fff;">
          <children>
-            <JFXTextField focusColor="#424242" layoutX="199.0" layoutY="74.0" prefHeight="25.0" prefWidth="303.0" promptText="Username" unFocusColor="#ff6659" />
-            <JFXPasswordField focusColor="#424242" layoutX="199.0" layoutY="144.0" prefHeight="25.0" prefWidth="303.0" promptText="Passwrod" unFocusColor="#ff6659" />
+            <JFXTextField fx:id="loginUsername" focusColor="#424242" layoutX="199.0" layoutY="74.0" prefHeight="25.0" prefWidth="303.0" promptText="Username" unFocusColor="#ff6659" />
+            <JFXPasswordField fx:id="loginPassword" focusColor="#424242" layoutX="199.0" layoutY="144.0" prefHeight="25.0" prefWidth="303.0" promptText="Passwrod" unFocusColor="#ff6659" />
             <Label contentDisplay="CENTER" layoutX="328.0" layoutY="26.0" text="Login" textFill="#756c6c">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <JFXButton contentDisplay="CENTER" layoutX="265.0" layoutY="197.0" prefHeight="39.0" prefWidth="216.0" style="-fx-background-color: #424242;" text="Login" textFill="WHITE">
+            <JFXButton fx:id="loginButton" contentDisplay="CENTER" layoutX="265.0" layoutY="197.0" prefHeight="39.0" prefWidth="216.0" style="-fx-background-color: #424242;" text="Login" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
@@ -31,7 +31,7 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <JFXButton layoutX="617.0" layoutY="14.0" style="-fx-background-color: #9a0007;" text="Sign Up" textFill="WHITE">
+      <JFXButton fx:id="loginSignUpButton" layoutX="617.0" layoutY="14.0" style="-fx-background-color: #9a0007;" text="Sign Up" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>
