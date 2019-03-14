@@ -32,9 +32,16 @@ public class LoginController {
 
     @FXML
     void initialize() {
+
+        String loinText = loginUsername.getText().trim();
+        String loginPwd = loginPassword.getText().trim();
+
         loginButton.setOnAction(actionEvent -> {
-            System.out.println("Login clicked");
+            loginUser(loinText, loginPwd);
         });
 
+    }
+
+    private void loginUser(String username, String password) {
     }
 }

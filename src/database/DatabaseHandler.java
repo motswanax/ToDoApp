@@ -10,7 +10,7 @@ import java.sql.*;
 public class DatabaseHandler extends Configs {
     Connection dbConnection;
 
-   /* public Connection getDbConnection() throws ClassNotFoundException, SQLException {
+    public Connection getDbConnection() throws ClassNotFoundException, SQLException {
         String connectionString = "jdbc:mysql://" + dbHost + ":"
                 + dbPort + "/"
                 + dbName;
@@ -24,7 +24,7 @@ public class DatabaseHandler extends Configs {
     }
 
 
-    public void updateTask(Timestamp datecreated, String description, String task, int taskId) throws SQLException, ClassNotFoundException {
+   /* public void updateTask(Timestamp datecreated, String description, String task, int taskId) throws SQLException, ClassNotFoundException {
 
         String query = "UPDATE tasks SET datecreated=?, description=?, task=? WHERE taskid=?";
 
