@@ -18,6 +18,9 @@ import java.util.ResourceBundle;
  * @author baike
  */
 public class AddItemController {
+
+    public static int userId;
+
     @FXML
     private AnchorPane rootAnchorPane;
 
@@ -68,6 +71,11 @@ public class AddItemController {
             try {
                 AnchorPane formPane = FXMLLoader.load(getClass().getResource("/view/addItemForm.fxml"));
 
+                // Pass the userId from login view to addItem view
+//                AddItemController.userId = getUserId();
+//                AddItemFormController addItemController = new AddItemFormController();
+//                addItemController.setUserId(getUserId());
+
                 // add transition to the switching to the new view
                 FadeTransition rootTransition = new FadeTransition(Duration.millis(2000), formPane);
                 rootTransition.setFromValue(0f);
@@ -82,4 +90,13 @@ public class AddItemController {
             }
         });
     }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+        System.out.println("User Id is " + this.userId);
+    }
+
+    /*public int getUserId() {
+        return this.userId;
+    }*/
 }

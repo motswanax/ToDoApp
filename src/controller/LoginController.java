@@ -22,6 +22,7 @@ import java.util.ResourceBundle;
  * @author baike
  */
 public class LoginController {
+    private int userId;
     @FXML
     private ResourceBundle resources;
 
@@ -51,20 +52,6 @@ public class LoginController {
             loginSignUpButton.getScene().getWindow().hide();
             // take user to sign up screen
             goToView("/view/signup.fxml", "Sign Up");
-            /*FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/view/signup.fxml"));
-
-            try {
-                loader.load();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setTitle("Sign Up");
-            stage.setScene(new Scene(root));
-            stage.showAndWait();*/
         });
 
         loginButton.setOnAction(actionEvent -> {
@@ -85,8 +72,7 @@ public class LoginController {
 
                     // proof
                     String name = userRow.getString("firstname");
-
-                    System.out.println("Welcome " + name);
+                    userId = userRow.getInt("userid");
                 }
 
                 if (counter == 1) {
@@ -109,7 +95,24 @@ public class LoginController {
         loginSignUpButton.getScene().getWindow().hide();
 
         // take user to add item screen
-        goToView("/view/addItem.fxml", "Add Item");
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/view/addItem.fxml"));
+
+        try {
+            loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Parent root = loader.getRoot();
+        Stage stage = new Stage();
+        stage.setTitle("Add Item");
+        stage.setScene(new Scene(root));
+
+        AddItemController addItemController = loader.getController();
+        addItemController.setUserId(userId);
+
+        stage.showAndWait();
     }
 
     private void goToView(String viewPath, String viewTitle) {

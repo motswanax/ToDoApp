@@ -5,6 +5,7 @@ package database;
  * @author baike
  */
 
+import model.Task;
 import model.User;
 
 import java.sql.*;
@@ -160,6 +161,7 @@ public class DatabaseHandler extends Configs {
         return resultSet.getInt(1);
 
     }
+    */
 
     public void insertTask(Task task) {
 
@@ -171,8 +173,8 @@ public class DatabaseHandler extends Configs {
             PreparedStatement preparedStatement = getDbConnection().prepareStatement(insert);
 
 
-            System.out.println("From DBHandler UserId: " + task.getUserId());
-
+//            System.out.println("From DBHandler UserId: " + task.getUserId());
+//
             preparedStatement.setInt(1, task.getUserId());
             preparedStatement.setTimestamp(2, task.getDatecreated());
             preparedStatement.setString(3, task.getDescription());
@@ -188,7 +190,7 @@ public class DatabaseHandler extends Configs {
         }
 
 
-    }*/
+    }
 
 
     //Read
