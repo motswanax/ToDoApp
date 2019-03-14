@@ -4,7 +4,12 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -33,11 +38,37 @@ public class LoginController {
     @FXML
     void initialize() {
 
-        String loinText = loginUsername.getText().trim();
+        String loginText = loginUsername.getText().trim();
         String loginPwd = loginPassword.getText().trim();
 
+        System.out.println("adfd" + loginText);
+
+        loginSignUpButton.setOnAction(actionEvent1 -> {
+            System.out.println("haha");
+            // take user to sign up screen
+            loginSignUpButton.getScene().getWindow().hide();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/view/signup.fxml"));
+
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            Parent root = loader.getRoot();
+            Stage stage = new Stage();
+            stage.setTitle("Sign Up");
+            stage.setScene(new Scene(root));
+            stage.showAndWait();
+        });
+
         loginButton.setOnAction(actionEvent -> {
-            loginUser(loinText, loginPwd);
+            if (!loginText.equals("") || !loginPwd.equals("")) {
+                loginUser(loginText, loginPwd);
+            } else {
+                System.out.println("Error login in user");
+            }
         });
 
     }

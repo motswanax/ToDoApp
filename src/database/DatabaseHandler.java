@@ -5,6 +5,8 @@ package database;
  * @author baike
  */
 
+import model.User;
+
 import java.sql.*;
 
 public class DatabaseHandler extends Configs {
@@ -24,33 +26,33 @@ public class DatabaseHandler extends Configs {
     }
 
 
-   /* public void updateTask(Timestamp datecreated, String description, String task, int taskId) throws SQLException, ClassNotFoundException {
-
-        String query = "UPDATE tasks SET datecreated=?, description=?, task=? WHERE taskid=?";
-
-
-        PreparedStatement preparedStatement = getDbConnection().prepareStatement(query);
-        preparedStatement.setTimestamp(1, datecreated);
-        preparedStatement.setString(2, description);
-        preparedStatement.setString(3, task);
-       // preparedStatement.setInt(4, userId);
-        preparedStatement.setInt(4, taskId);
-        preparedStatement.executeUpdate();
-        preparedStatement.close();
-
-    }
-
-    //Delete Task
-    public void deleteTask(int userId, int taskId) throws SQLException, ClassNotFoundException {
-        String query = "DELETE FROM " + Const.TASKS_TABLE + " WHERE "+
-                Const.USERS_ID + "=?" + " AND " + Const.TASKS_ID + "=?";
-
-        PreparedStatement preparedStatement = getDbConnection().prepareStatement(query);
-        preparedStatement.setInt(1, userId);
-        preparedStatement.setInt(2, taskId);
-        preparedStatement.execute();
-        preparedStatement.close();
-    }
+//    public void updateTask(Timestamp datecreated, String description, String task, int taskId) throws SQLException, ClassNotFoundException {
+//
+//        String query = "UPDATE tasks SET datecreated=?, description=?, task=? WHERE taskid=?";
+//
+//
+//        PreparedStatement preparedStatement = getDbConnection().prepareStatement(query);
+//        preparedStatement.setTimestamp(1, datecreated);
+//        preparedStatement.setString(2, description);
+//        preparedStatement.setString(3, task);
+//       // preparedStatement.setInt(4, userId);
+//        preparedStatement.setInt(4, taskId);
+//        preparedStatement.executeUpdate();
+//        preparedStatement.close();
+//
+//    }
+//
+//    //Delete Task
+//   public void deleteTask(int userId, int taskId) throws SQLException, ClassNotFoundException {
+//        String query = "DELETE FROM " + Const.TASKS_TABLE + " WHERE "+
+//                Const.USERS_ID + "=?" + " AND " + Const.TASKS_ID + "=?";
+//
+//        PreparedStatement preparedStatement = getDbConnection().prepareStatement(query);
+//        preparedStatement.setInt(1, userId);
+//        preparedStatement.setInt(2, taskId);
+//        preparedStatement.execute();
+//        preparedStatement.close();
+//    }
     //Write
     public void signUpUser(User user) {
 
@@ -80,7 +82,7 @@ public class DatabaseHandler extends Configs {
 
     }
 
-    public ResultSet getTasksByUser(int userId) {
+    /* public ResultSet getTasksByUser(int userId) {
 
         ResultSet resultTasks = null;
 

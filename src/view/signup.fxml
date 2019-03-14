@@ -8,9 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane fx:id="signupCheckboxFemale" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignupController">
+<AnchorPane prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignupController">
    <children>
       <AnchorPane prefHeight="76.0" prefWidth="700.0" style="-fx-background-color: #d32f2f;">
          <children>
@@ -51,7 +49,7 @@
          </font>
       </JFXTextField>
       <JFXCheckBox fx:id="signupCheckboxMale" layoutX="281.0" layoutY="291.0" selected="true" text="Male" />
-      <JFXCheckBox layoutX="357.0" layoutY="291.0" text="Female" />
+      <JFXCheckBox fx:id="signupCheckboxFemale" layoutX="357.0" layoutY="291.0" text="Female" />
       <JFXPasswordField fx:id="signupPassword" focusColor="#9a0007" layoutX="197.0" layoutY="244.0" prefHeight="29.0" prefWidth="307.0" promptText="Password" unFocusColor="#424242">
          <font>
             <Font size="13.0" />
