@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -17,7 +16,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <Label alignment="CENTER" layoutX="258.0" layoutY="141.0" text="No Tasks for Today Yet!" textFill="#797373">
+      <Label fx:id="noTaskLabel" alignment="CENTER" layoutX="258.0" layoutY="141.0" text="No Tasks for Today Yet!" textFill="#797373">
          <font>
             <Font size="18.0" />
          </font>
