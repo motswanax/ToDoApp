@@ -48,10 +48,10 @@ public class LoginController {
         databaseHandler = new DatabaseHandler();
 
         loginSignUpButton.setOnAction(actionEvent1 -> {
-            System.out.println("haha");
-            // take user to sign up screen
             loginSignUpButton.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
+            // take user to sign up screen
+            goToView("/view/signup.fxml", "Sign Up");
+            /*FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/view/signup.fxml"));
 
             try {
@@ -64,7 +64,7 @@ public class LoginController {
             Stage stage = new Stage();
             stage.setTitle("Sign Up");
             stage.setScene(new Scene(root));
-            stage.showAndWait();
+            stage.showAndWait();*/
         });
 
         loginButton.setOnAction(actionEvent -> {
@@ -90,7 +90,7 @@ public class LoginController {
                 }
 
                 if (counter == 1) {
-                    System.out.println("Login successful");
+                    showAddItemScreen();
                 } else {
                     Shaker usernameShaker = new Shaker(loginUsername);
                     usernameShaker.shake();
@@ -102,5 +102,30 @@ public class LoginController {
                 e.printStackTrace();
             }
         });
+    }
+
+    private void showAddItemScreen() {
+
+        loginSignUpButton.getScene().getWindow().hide();
+
+        // take user to add item screen
+        goToView("/view/addItem.fxml", "Add Item");
+    }
+
+    private void goToView(String viewPath, String viewTitle) {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource(viewPath));
+
+        try {
+            loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Parent root = loader.getRoot();
+        Stage stage = new Stage();
+        stage.setTitle(viewTitle);
+        stage.setScene(new Scene(root));
+        stage.showAndWait();
     }
 }
