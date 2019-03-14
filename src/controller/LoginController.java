@@ -1,5 +1,6 @@
 package controller;
 
+import animations.Shaker;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
@@ -90,6 +91,12 @@ public class LoginController {
 
                 if (counter == 1) {
                     System.out.println("Login successful");
+                } else {
+                    Shaker usernameShaker = new Shaker(loginUsername);
+                    usernameShaker.shake();
+                    Shaker passwordShaker = new Shaker(loginPassword);
+                    passwordShaker.shake();
+
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
