@@ -3,14 +3,18 @@ package controller;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import database.DatabaseHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.User;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 /**
@@ -35,13 +39,12 @@ public class LoginController {
     @FXML
     private JFXButton loginSignUpButton;
 
+    private DatabaseHandler databaseHandler;
+
     @FXML
     void initialize() {
 
-        String loginText = loginUsername.getText().trim();
-        String loginPwd = loginPassword.getText().trim();
-
-        System.out.println("adfd" + loginText);
+        databaseHandler = new DatabaseHandler();
 
         loginSignUpButton.setOnAction(actionEvent1 -> {
             System.out.println("haha");
@@ -64,15 +67,33 @@ public class LoginController {
         });
 
         loginButton.setOnAction(actionEvent -> {
-            if (!loginText.equals("") || !loginPwd.equals("")) {
-                loginUser(loginText, loginPwd);
-            } else {
-                System.out.println("Error login in user");
+
+            String loginText = loginUsername.getText().trim();
+            String loginPwd = loginPassword.getText().trim();
+
+            User user = new User();
+            user.setUserName(loginText);
+            user.setPassword(loginPwd);
+
+            ResultSet userRow = databaseHandler.getUser(user);
+
+            int counter = 0;
+            try {
+                while (userRow.next()) {
+                    counter++;
+
+                    // proof
+                    String name = userRow.getString("firstname");
+
+                    System.out.println("Welcome " + name);
+                }
+
+                if (counter == 1) {
+                    System.out.println("Login successful");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
         });
-
-    }
-
-    private void loginUser(String username, String password) {
     }
 }

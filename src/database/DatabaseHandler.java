@@ -196,5 +196,30 @@ public class DatabaseHandler extends Configs {
     //Update
 
     //Delete
+    public ResultSet getUser(User user) {
+
+        ResultSet resultSet = null;
+
+        if (!user.getUserName().equals("") || !user.getPassword().equals("")) {
+            String query = "SELECT * FROM " + Const.USERS_TABLE + " WHERE " + Const.USERS_USERNAME + "=?" + " AND "
+                    + Const.USERS_PASSWORD + "=?";
+
+            try {
+                PreparedStatement preparedStatement = getDbConnection().prepareStatement(query);
+                preparedStatement.setString(1, user.getUserName());
+                preparedStatement.setString(2, user.getPassword());
+
+                resultSet = preparedStatement.executeQuery();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("Please enter your credentials");
+        }
+
+        return resultSet;
+    }
 
 }
